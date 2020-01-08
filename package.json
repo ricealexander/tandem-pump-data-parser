@@ -1,0 +1,24 @@
+{
+  "name": "tandem-data-parser",
+  "version": "1.0.0",
+  "description": "Scripts for converting Tandem's CSV exports into JSON.",
+  "main": "main.js",
+  "author": {
+    "name": "Alexander Rice",
+    "email": "webdev@ricealexander.com",
+    "url": "https://ricealexander.com"
+  },
+  "repository": "github:ricealexander/tandem-data-parser",
+  "bugs": "https://github.com/ricealexander/tandem-data-parser/issues",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-unicorn": "^15.0.1",
+    "parcel": "^1.12.4"
+  }
+}

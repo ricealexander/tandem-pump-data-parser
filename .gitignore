@@ -1,0 +1,11 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# NPM files
+/node_modules
+/package-lock.json
+
+# Parcel files
+/.cache
+/dist
