@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { parseCSV } from './lib'
 
 const CSV_FILES_PATH = '/data'
 
@@ -22,8 +23,28 @@ async function parseTandemData (url) {
     })
 
   const [metaData, ...CSVTables] = sections
-  return {metaData, CSVTables}
+  console.log(CSVTables)
+  const JSONTables = CSVTables.map(table => parseCSV(table))
+  return {metaData, JSONTables}
 }
 
 parseTandemData('Tandem Data 20191113-20200106.csv')
   .then(data => console.log(data))
+
+window.parseAttempt = function (data) {
+  // Tandem tables are delimeted with empty lines
+  const sections = data
+    .replace(/\r\n|\r/, '\n') // normalize line-endings
+    .split(/\n\n/)            // split on empty lines
+    .filter(section => {      // remove empty lines from array
+      // empty lines may include invisible characters
+      // section has content if it contains word characters or commas
+      const hasContent = string => /[\w,]/.test(string)
+      return hasContent(section)
+    })
+
+  const [metaData, ...CSVTables] = sections
+  console.log(CSVTables)
+  const JSONTables = CSVTables.map(table => parseCSV(table))
+  return {metaData, JSONTables}
+}
