@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { parseCSV } from './lib'
 
-const CSV_FILES_PATH = '/data'
+const DATA_FILE = '/data/Tandem Data 20191113-20200106.csv'
 
 async function parseTandemData (url) {
-  const { data, headers } = await axios.get(`${CSV_FILES_PATH}/${url}`)
+  const { data, headers } = await axios.get(url)
   const isCSV = headers['content-type'].includes('text/csv')
 
   if (!isCSV) {
@@ -28,7 +28,7 @@ async function parseTandemData (url) {
   return {metaData, JSONTables}
 }
 
-parseTandemData('Tandem Data 20191113-20200106.csv')
+parseTandemData(DATA_FILE)
   .then(data => console.log(data))
 
 window.parseAttempt = function (data) {

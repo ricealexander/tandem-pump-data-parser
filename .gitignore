@@ -1,3 +1,6 @@
+# Potentially-sensitive data
+/static/data
+
 # OS files
 .DS_Store
 Thumbs.db
